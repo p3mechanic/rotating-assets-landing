@@ -418,7 +418,6 @@ export const processSteps = [
 export const industries = ['Power Generation', 'Oil & Gas Support', 'Petrochemical', 'Manufacturing', 'Utilities', 'Process Plant', 'EPC & Maintenance', 'General Industry'];
 
 export const portfolioItems = [
-  { title: 'Project & Service Portfolio', image: '/gallery/project-portfolio.webp' },
   { title: 'Procurement & Supply Gallery', image: '/gallery/gallery-1.webp' },
   { title: 'Machining & Component Work', image: '/gallery/gallery-2.webp' },
   { title: 'Rotating Equipment Service', image: '/gallery/gallery-3.webp' },

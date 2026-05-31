@@ -28,6 +28,7 @@ const partnerLogos = [
 
 export function HomeContent() {
   const { locale, pick } = useLocale();
+  const visibleStats = stats.filter((stat) => stat.label.en !== 'Established');
 
   return (
     <main>
@@ -113,8 +114,8 @@ export function HomeContent() {
                 </div>
               </div>
 
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                {stats.map((stat) => (
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                {visibleStats.map((stat) => (
                   <div key={stat.value + pick(stat.label)} className="rounded-3xl border border-slate-200 bg-white/95 p-4 shadow-sm">
                     <p className="text-2xl font-black leading-none text-brand-800">{stat.value}</p>
                     <p className="mt-2 text-[11px] font-black uppercase leading-snug tracking-[0.12em] text-slate-500">{pick(stat.label)}</p>

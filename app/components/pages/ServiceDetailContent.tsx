@@ -2,9 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { CTASection } from '@/app/components/CTASection';
-import { SectionHeading } from '@/app/components/SectionHeading';
 import { useLocale } from '@/app/components/LocaleProvider';
 import { getServiceBySlug } from '@/app/lib/site';
 
@@ -16,6 +15,14 @@ const serviceHeroBySlug: Record<string, string> = {
   'consultant-engineering': '/service-hero/consultant-engineering.webp',
   'plant-inspection': '/service-hero/plant-inspection.webp'
 };
+
+const galleryImages = [
+  '/gallery/gallery-3.webp',
+  '/gallery/gallery-4.webp',
+  '/gallery/gallery-2.webp',
+  '/gallery/gallery-1.webp',
+  '/gallery/workshop.webp'
+];
 
 export function ServiceDetailContent({ slug }: { slug: string }) {
   const service = getServiceBySlug(slug);
@@ -68,35 +75,25 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
       </section>
 
       <section className="py-16 sm:py-20 lg:py-24">
-        <div className="container-shell grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
-          <div>
-            <Link href="/services" className="inline-flex items-center gap-2 text-sm font-black text-brand-800"><ArrowLeft className="h-4 w-4" />{locale === 'id' ? 'Semua layanan' : 'All services'}</Link>
-            <div className="mt-8 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-card sm:p-8">
-              <SectionHeading eyebrow="Scope" title={locale === 'id' ? 'Ruang lingkup pekerjaan.' : 'Work scope.'} description={pick(service.short)} />
-              <div className="mt-8 grid gap-3">
-                {service.bullets.map((bullet) => (
-                  <div key={bullet.en} className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700"><CheckCircle2 className="mt-0.5 h-5 w-5 flex-none text-emerald-500" />{pick(bullet)}</div>
-                ))}
+        <div className="container-shell">
+          <Link href="/services" className="inline-flex items-center gap-2 text-sm font-black text-brand-800"><ArrowLeft className="h-4 w-4" />{locale === 'id' ? 'Semua layanan' : 'All services'}</Link>
+          <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {galleryImages.map((image, index) => (
+              <div
+                key={image}
+                className={index === 0 ? 'overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-2 shadow-card md:col-span-2' : 'overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-2 shadow-card'}
+              >
+                <Image
+                  src={image}
+                  alt={`${pick(service.title)} gallery ${index + 1}`}
+                  width={900}
+                  height={900}
+                  priority={index === 0}
+                  sizes={index === 0 ? '(max-width: 768px) 100vw, 58vw' : '(max-width: 768px) 100vw, 28vw'}
+                  className={index === 0 ? 'aspect-[16/10] w-full rounded-[1.5rem] object-cover object-center' : 'aspect-[4/5] w-full rounded-[1.5rem] object-cover object-center'}
+                />
               </div>
-            </div>
-          </div>
-          <div className="grid gap-5">
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-card sm:p-8">
-              <h3 className="text-xl font-black text-slate-950">Deliverables</h3>
-              <div className="mt-5 grid gap-3">
-                {service.deliverables.map((item) => (
-                  <div key={item.en} className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700">{pick(item)}</div>
-                ))}
-              </div>
-            </div>
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-card sm:p-8">
-              <h3 className="text-xl font-black text-slate-950">{locale === 'id' ? 'Aplikasi' : 'Applications'}</h3>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {service.applications.map((item) => (
-                  <span key={item} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700">{item}</span>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
