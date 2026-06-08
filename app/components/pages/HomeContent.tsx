@@ -2,11 +2,11 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, BadgeCheck, Boxes, BriefcaseBusiness, CheckCircle2, CirclePlay, Cpu, Gauge, Layers3, Radar, RefreshCw, ScanLine, SearchCheck, ShieldCheck, Wrench } from 'lucide-react';
+import { ArrowRight, BadgeCheck, Boxes, BriefcaseBusiness, CheckCircle2, Cpu, Gauge, Layers3, Radar, RefreshCw, ScanLine, SearchCheck, ShieldCheck, Wrench } from 'lucide-react';
 import { CTASection } from '@/app/components/CTASection';
 import { SectionHeading } from '@/app/components/SectionHeading';
 import { useLocale } from '@/app/components/LocaleProvider';
-import { aboutCopy, heroCopy, industries, services, siteConfig, stats, technologyFeatures, values } from '@/app/lib/site';
+import { aboutCopy, heroCopy, industries, partnerLogos, services, siteConfig, stats, technologyFeatures, values } from '@/app/lib/site';
 
 const techIcons = [Cpu, Radar, Layers3, Gauge];
 
@@ -16,15 +16,10 @@ const serviceIcons = {
   refurbish: RefreshCw,
   measure: ScanLine,
   consult: BriefcaseBusiness,
-  inspection: SearchCheck
+  inspection: SearchCheck,
+  valve: Wrench,
+  leak: ShieldCheck
 } as const;
-
-const partnerLogos = [
-  { name: 'PT Paiton Operation & Maintenance Indonesia (POMI)', src: '/partners/pomi.webp', width: 320, height: 120 },
-  { name: 'PT Paiton Energy', src: '/partners/paiton-energy.webp', width: 340, height: 120 },
-  { name: 'Cirebon Power', src: '/partners/cirebon-power.webp', width: 260, height: 100 }
-];
-
 
 export function HomeContent() {
   const { locale, pick } = useLocale();
@@ -136,27 +131,6 @@ export function HomeContent() {
       <section className="border-b border-slate-200 bg-white py-5">
         <div className="container-shell flex flex-wrap justify-center gap-2 sm:gap-3">
           {industries.map((industry) => <span key={industry} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-black text-slate-700 sm:text-sm">{industry}</span>)}
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-20 lg:py-24">
-        <div className="container-shell grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div>
-            <SectionHeading
-              eyebrow={locale === 'id' ? 'Company video' : 'Company video'}
-              title={locale === 'id' ? 'Profil perusahaan dengan visual yang kuat dan kredibel.' : 'A credible visual profile for industrial decision makers.'}
-              description={locale === 'id' ? 'Video profile membantu calon klien memahami positioning, capability, dan standar kerja PT VPE secara lebih cepat.' : 'The video profile helps prospective clients understand PT VPE’s positioning, capability, and work standards faster.'}
-            />
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href={siteConfig.social.youtube} target="_blank" rel="noreferrer" className="btn-primary justify-center">YouTube <CirclePlay className="h-4 w-4" /></a>
-              <Link href="/profile" className="btn-secondary justify-center">Company Profile</Link>
-            </div>
-          </div>
-          <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-2 shadow-elevated sm:p-3">
-            <div className="aspect-video overflow-hidden rounded-[1.5rem] bg-slate-950">
-              <iframe className="h-full w-full" src="https://www.youtube.com/embed/uWJ3vtU0OZQ" title="PT VPE Company Video Profile" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
-            </div>
-          </div>
         </div>
       </section>
 

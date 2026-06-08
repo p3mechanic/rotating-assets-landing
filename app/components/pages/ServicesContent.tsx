@@ -14,7 +14,9 @@ const serviceIconMap = {
   refurbishment: RefreshCcw,
   measurements: Ruler,
   'consultant-engineering': Network,
-  'plant-inspection': ClipboardCheck
+  'plant-inspection': ClipboardCheck,
+  'valve-maintenance-service': Wrench,
+  'online-leak-sealing': ShieldCheck
 } as const;
 
 export function ServicesContent() {

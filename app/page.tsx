@@ -21,19 +21,8 @@ export default function HomePage() {
       email: [siteConfig.email, siteConfig.salesEmail],
       telephone: siteConfig.phone,
       foundingDate: siteConfig.founded,
-      sameAs: [siteConfig.social.youtube],
       address: offices.map((office) => ({ '@type': 'PostalAddress', streetAddress: office.address, addressCountry: 'ID' })),
       hasCredential: certifications.map((cert) => ({ '@type': 'EducationalOccupationalCredential', name: cert.standard, credentialCategory: cert.title.en }))
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'VideoObject',
-      name: 'PT VPE Company Video Profile',
-      description: 'Company video profile for PT Velocity Power Engineering.',
-      embedUrl: 'https://www.youtube.com/embed/uWJ3vtU0OZQ',
-      contentUrl: siteConfig.social.youtube,
-      thumbnailUrl: `${siteConfig.url}/og-image.svg`,
-      publisher: { '@type': 'Organization', name: siteConfig.legalName }
     },
     {
       '@context': 'https://schema.org',

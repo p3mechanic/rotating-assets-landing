@@ -28,7 +28,7 @@ export const siteConfig = {
   founded: '2025',
   locale: 'id_ID',
   description:
-    'PT Velocity Power Engineering menyediakan rotating service, reverse engineering, refurbishment, measurement, plant inspection, consultant engineering, dan supply spare part untuk kebutuhan industri.',
+    'PT Velocity Power Engineering menyediakan rotating service, valve maintenance and service, online leak sealing, reverse engineering, refurbishment, measurement, plant inspection, consultant engineering, dan supply spare part untuk kebutuhan industri.',
   keywords: [
     'PT Velocity Power Engineering',
     'PT VPE',
@@ -37,6 +37,11 @@ export const siteConfig = {
     'turbine service',
     'pump repair',
     'compressor maintenance',
+    'valve maintenance',
+    'valve service',
+    'online leak sealing',
+    'leak sealing',
+    'pipeline leak repair',
     'spare part supply',
     'refurbishment',
     'measurement service',
@@ -46,7 +51,6 @@ export const siteConfig = {
     'ISO 45001'
   ],
   social: {
-    youtube: 'https://www.youtube.com/watch?v=uWJ3vtU0OZQ',
     linkedin: '#',
     instagram: '#'
   }
@@ -67,7 +71,7 @@ export const offices = [
 
 export const stats = [
   { label: { id: 'Established', en: 'Established' }, value: '2025' },
-  { label: { id: 'Core Services', en: 'Core Services' }, value: '6+' },
+  { label: { id: 'Core Services', en: 'Core Services' }, value: '8+' },
   { label: { id: 'ISO Systems', en: 'ISO Systems' }, value: '3' },
   { label: { id: 'Service Model', en: 'Service Model' }, value: 'Workshop + Site' }
 ];
@@ -79,8 +83,8 @@ export const heroCopy = {
     en: 'Rotating & Reverse Engineering for Industrial Reliability'
   },
   description: {
-    id: 'PT Velocity Power Engineering membantu plant, maintenance, dan procurement team menjaga performa critical rotating equipment melalui rotating service, refurbishment, measurement, plant inspection, reverse engineering, dan spare part supply yang terdokumentasi.',
-    en: 'PT Velocity Power Engineering supports plant, maintenance, and procurement teams through rotating service, refurbishment, measurement, plant inspection, reverse engineering, and spare part supply for critical industrial assets.'
+    id: 'PT Velocity Power Engineering membantu plant, maintenance, dan procurement team menjaga performa critical equipment melalui rotating service, valve maintenance and service, online leak sealing, refurbishment, measurement, plant inspection, reverse engineering, dan spare part supply yang terdokumentasi.',
+    en: 'PT Velocity Power Engineering supports plant, maintenance, and procurement teams through rotating service, valve maintenance and service, online leak sealing, refurbishment, measurement, plant inspection, reverse engineering, and spare part supply for critical industrial assets.'
   }
 };
 
@@ -180,6 +184,63 @@ export const services: Service[] = [
     applications: ['Turbine auxiliary', 'Pump system', 'Compressor train', 'Fan & blower', 'Gearbox assembly'],
     seoTitle: 'Rotating Service untuk Turbine, Pump, Compressor, Fan, dan Gearbox',
     seoDescription: 'PT VPE menyediakan rotating service, overhaul, balancing, alignment, repair, dan refurbishment untuk equipment kritikal industri.'
+  },
+
+  {
+    slug: 'valve-maintenance-service',
+    icon: 'valve',
+    title: { id: 'Valve Maintenance & Service', en: 'Valve Maintenance & Service' },
+    short: {
+      id: 'Inspection, maintenance, repair, testing, dan overhaul valve untuk menjaga sealing performance dan operational reliability.',
+      en: 'Inspection, maintenance, repair, testing, and valve overhaul to maintain sealing performance and operational reliability.'
+    },
+    description: {
+      id: 'Layanan valve maintenance mencakup inspection, disassembly, cleaning, lapping, seat/plug/disc repair, actuator check, pressure test, dan dokumentasi untuk mendukung reliability sistem perpipaan dan proses.',
+      en: 'Valve maintenance service covers inspection, disassembly, cleaning, lapping, seat/plug/disc repair, actuator check, pressure testing, and documentation to support piping and process system reliability.'
+    },
+    bullets: [
+      { id: 'Valve inspection and condition assessment', en: 'Valve inspection and condition assessment' },
+      { id: 'Disassembly, cleaning, lapping, and repair', en: 'Disassembly, cleaning, lapping, and repair' },
+      { id: 'Seat, disc, plug, stem, packing, and actuator review', en: 'Seat, disc, plug, stem, packing, and actuator review' },
+      { id: 'Pressure test, leakage check, and final report', en: 'Pressure test, leakage check, and final report' }
+    ],
+    deliverables: [
+      { id: 'Valve inspection report', en: 'Valve inspection report' },
+      { id: 'Repair and overhaul record', en: 'Repair and overhaul record' },
+      { id: 'Pressure/leakage test result', en: 'Pressure/leakage test result' },
+      { id: 'Final recommendation', en: 'Final recommendation' }
+    ],
+    applications: ['Control valve', 'Gate/globe/check valve', 'Safety and relief valve support', 'Process piping', 'Utility piping'],
+    seoTitle: 'Valve Maintenance and Service untuk Valve Industri',
+    seoDescription: 'PT VPE menyediakan valve maintenance and service, inspection, repair, overhaul, lapping, pressure test, dan leakage check untuk kebutuhan industri.'
+  },
+  {
+    slug: 'online-leak-sealing',
+    icon: 'leak',
+    title: { id: 'Online Leak Sealing', en: 'Online Leak Sealing' },
+    short: {
+      id: 'Penanganan kebocoran flange, valve, dan pipeline secara online untuk meminimalkan downtime.',
+      en: 'Online sealing for flange, valve, and pipeline leaks to minimize downtime.'
+    },
+    description: {
+      id: 'Online leak sealing membantu mengendalikan kebocoran saat equipment masih beroperasi melalui assessment, clamp/box design, sealant injection, bolting control, dan monitoring sesuai kondisi operasi serta prosedur safety.',
+      en: 'Online leak sealing controls leakage while equipment remains in operation through assessment, clamp/box design, sealant injection, bolting control, and monitoring according to operating conditions and safety procedures.'
+    },
+    bullets: [
+      { id: 'Leak source assessment and safety review', en: 'Leak source assessment and safety review' },
+      { id: 'Clamp, enclosure, or box-up design support', en: 'Clamp, enclosure, or box-up design support' },
+      { id: 'Sealant injection and leakage control', en: 'Sealant injection and leakage control' },
+      { id: 'Monitoring, verification, and completion report', en: 'Monitoring, verification, and completion report' }
+    ],
+    deliverables: [
+      { id: 'Leak assessment note', en: 'Leak assessment note' },
+      { id: 'Sealing method statement', en: 'Sealing method statement' },
+      { id: 'Injection and monitoring record', en: 'Injection and monitoring record' },
+      { id: 'Completion and recommendation report', en: 'Completion and recommendation report' }
+    ],
+    applications: ['Flange leak', 'Valve gland leak', 'Pipeline leak', 'Steam and utility line', 'Process line support'],
+    seoTitle: 'Online Leak Sealing untuk Flange, Valve, dan Pipeline',
+    seoDescription: 'PT VPE menyediakan online leak sealing untuk menangani kebocoran flange, valve, pipeline, dan utility line dengan fokus safety dan downtime reduction.'
   },
   {
     slug: 'spare-part-supply',
@@ -417,6 +478,20 @@ export const processSteps = [
 
 export const industries = ['Power Generation', 'Oil & Gas Support', 'Petrochemical', 'Manufacturing', 'Utilities', 'Process Plant', 'EPC & Maintenance', 'General Industry'];
 
+export type PartnerLogo = {
+  name: string;
+  src: string;
+  width: number;
+  height: number;
+};
+
+export const partnerLogos: PartnerLogo[] = [
+  { name: 'PT Paiton Operation & Maintenance Indonesia (POMI)', src: '/partners/pomi.webp', width: 300, height: 127 },
+  { name: 'PT Paiton Energy', src: '/partners/paiton-energy.webp', width: 431, height: 180 },
+  { name: 'Cirebon Power', src: '/partners/cirebon-power.webp', width: 350, height: 141 },
+  { name: 'MATRA', src: '/partners/matra.png', width: 826, height: 217 }
+];
+
 export const portfolioItems = [
   { title: 'Procurement & Supply Gallery', image: '/gallery/gallery-1.webp' },
   { title: 'Machining & Component Work', image: '/gallery/gallery-2.webp' },
@@ -455,8 +530,8 @@ export const faqs = [
   {
     question: { id: 'Apa fokus utama layanan PT VPE?', en: 'What are PT VPE’s main services?' },
     answer: {
-      id: 'Rotating service, reverse engineering, spare part supply, refurbishment, measurements, consultant engineering, dan plant inspection.',
-      en: 'Rotating service, reverse engineering, spare part supply, refurbishment, measurements, consultant engineering, and plant inspection.'
+      id: 'Rotating service, valve maintenance and service, online leak sealing, reverse engineering, spare part supply, refurbishment, measurements, consultant engineering, dan plant inspection.',
+      en: 'Rotating service, valve maintenance and service, online leak sealing, reverse engineering, spare part supply, refurbishment, measurements, consultant engineering, and plant inspection.'
     }
   },
   {
