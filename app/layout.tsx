@@ -5,7 +5,6 @@ import { Header } from '@/app/components/Header';
 import { LocaleProvider } from '@/app/components/LocaleProvider';
 import { siteConfig } from '@/app/lib/site';
 
-
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -26,6 +25,7 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.legalName }],
   creator: siteConfig.legalName,
   publisher: siteConfig.legalName,
+  category: 'Industrial engineering services',
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
@@ -34,7 +34,9 @@ export const metadata: Metadata = {
     siteName: siteConfig.legalName,
     title: `${siteConfig.legalName} | ${siteConfig.brandLine}`,
     description: siteConfig.description,
-    images: [{ url: '/og-image.svg', width: 1200, height: 630, alt: `${siteConfig.legalName} website preview` }]
+    images: [
+      { url: '/og-image.svg', width: 1200, height: 630, alt: `${siteConfig.legalName} website preview` }
+    ]
   },
   twitter: {
     card: 'summary_large_image',
@@ -43,10 +45,15 @@ export const metadata: Metadata = {
     images: ['/og-image.svg']
   },
   icons: {
-    icon: '/brand/logo-vpe-square.webp',
-    shortcut: '/brand/logo-vpe-square.webp',
-    apple: '/brand/logo-vpe-square.png'
-  }
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+      { url: '/brand/logo-vpe-square.png', type: 'image/png', sizes: '512x512' }
+    ],
+    shortcut: [{ url: '/favicon.ico' }],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }]
+  },
+  manifest: '/manifest.webmanifest'
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

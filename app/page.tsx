@@ -5,36 +5,107 @@ import { certifications, faqs, offices, services, siteConfig } from '@/app/lib/s
 
 export const metadata: Metadata = {
   title: `${siteConfig.legalName} | ${siteConfig.brandLine}`,
-  description: siteConfig.description
+  description: siteConfig.description,
+  alternates: { canonical: '/' }
 };
 
 export default function HomePage() {
+  const organizationId = `${siteConfig.url}/#organization`;
+  const websiteId = `${siteConfig.url}/#website`;
+
   const schema = [
     {
       '@context': 'https://schema.org',
       '@type': 'Organization',
+      '@id': organizationId,
       name: siteConfig.legalName,
       alternateName: siteConfig.companyName,
       url: siteConfig.url,
-      logo: `${siteConfig.url}/brand/logo-vpe-square.png`,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteConfig.url}/brand/logo-vpe-square.png`,
+        width: 512,
+        height: 512
+      },
+      image: `${siteConfig.url}/brand/logo-vpe-square.png`,
       slogan: siteConfig.tagline,
+      description: siteConfig.description,
       email: [siteConfig.email, siteConfig.salesEmail],
       telephone: siteConfig.phone,
       foundingDate: siteConfig.founded,
-      address: offices.map((office) => ({ '@type': 'PostalAddress', streetAddress: office.address, addressCountry: 'ID' })),
-      hasCredential: certifications.map((cert) => ({ '@type': 'EducationalOccupationalCredential', name: cert.standard, credentialCategory: cert.title.en }))
+      address: offices.map((office) => ({
+        '@type': 'PostalAddress',
+        streetAddress: office.address,
+        addressCountry: 'ID'
+      })),
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          contactType: 'sales',
+          email: siteConfig.salesEmail,
+          telephone: siteConfig.phone,
+          areaServed: 'ID',
+          availableLanguage: ['id', 'en']
+        }
+      ],
+      hasCredential: certifications.map((cert) => ({
+        '@type': 'EducationalOccupationalCredential',
+        name: cert.standard,
+        credentialCategory: cert.title.en
+      }))
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      '@id': websiteId,
+      name: siteConfig.legalName,
+      alternateName: siteConfig.companyName,
+      url: siteConfig.url,
+      publisher: { '@id': organizationId },
+      inLanguage: ['id-ID', 'en']
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${siteConfig.url}/#webpage`,
+      url: siteConfig.url,
+      name: `${siteConfig.legalName} | ${siteConfig.brandLine}`,
+      description: siteConfig.description,
+      isPartOf: { '@id': websiteId },
+      about: { '@id': organizationId },
+      inLanguage: 'id-ID'
     },
     {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
-      itemListElement: services.map((service, index) => ({ '@type': 'ListItem', position: index + 1, item: { '@type': 'Service', name: service.title.en, description: service.short.en, url: `${siteConfig.url}/services/${service.slug}` } }))
+      name: 'PT VPE Core Services',
+      itemListElement: services.map((service, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Service',
+          name: service.title.en,
+          description: service.short.en,
+          provider: { '@id': organizationId },
+          url: `${siteConfig.url}/services/${service.slug}`
+        }
+      }))
     },
     {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.question.en, acceptedAnswer: { '@type': 'Answer', text: faq.answer.en } }))
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question.en,
+        acceptedAnswer: { '@type': 'Answer', text: faq.answer.en }
+      }))
     }
   ];
 
-  return <><JsonLd data={schema} /><HomeContent /></>;
+  return (
+    <>
+      <JsonLd data={schema} />
+      <HomeContent />
+    </>
+  );
 }
