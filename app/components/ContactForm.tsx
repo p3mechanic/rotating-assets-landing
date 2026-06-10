@@ -28,7 +28,7 @@ export function ContactForm() {
       if (!response.ok) throw new Error(data.message || 'Failed to submit form');
 
       setStatus('success');
-      setFeedback(locale === 'id' ? 'Inquiry diterima. Tim PT VPE akan menindaklanjuti.' : 'Inquiry received. PT VPE will follow up.');
+      setFeedback(locale === 'id' ? 'Permintaan RFQ diterima. Tim PT VPE akan menindaklanjuti.' : 'Your RFQ request has been received. PT VPE will follow up.');
       setForm(initialForm);
     } catch (error) {
       setStatus('error');
@@ -65,8 +65,8 @@ export function ContactForm() {
         <textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required rows={6} placeholder={locale === 'id' ? 'Tuliskan equipment, masalah, scope, timeline, dan dokumen pendukung.' : 'Describe equipment, issue, scope, timeline, and supporting documents.'} />
       </label>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" disabled={status === 'loading'} className="btn-primary justify-center disabled:cursor-not-allowed disabled:opacity-70">
-          {status === 'loading' ? (locale === 'id' ? 'Mengirim...' : 'Submitting...') : (locale === 'id' ? 'Kirim Inquiry' : 'Send Inquiry')} <Send className="h-4 w-4" />
+        <button type="submit" disabled={status === 'loading'} className="btn-primary justify-center text-[13px] sm:text-sm disabled:cursor-not-allowed disabled:opacity-70">
+          {status === 'loading' ? (locale === 'id' ? 'Mengirim...' : 'Submitting...') : (locale === 'id' ? 'Dapatkan RFQ Gratis' : 'Get Your Free RFQ')} <Send className="h-4 w-4" />
         </button>
         <p className={`text-sm ${status === 'error' ? 'text-rose-600' : status === 'success' ? 'text-emerald-600' : 'text-slate-500'}`}>{feedback}</p>
       </div>

@@ -49,8 +49,8 @@ export function ServiceDetailContent({ slug }: { slug: string }) {
               {pick(service.description)}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact" className="btn-primary justify-center">
-                {locale === 'id' ? 'Minta penawaran' : 'Request quote'} <ArrowRight className="h-4 w-4" />
+              <Link href="/contact" className="btn-primary justify-center text-[13px] sm:text-sm">
+                {locale === 'id' ? 'Dapatkan RFQ Gratis' : 'Get Your Free RFQ'} <ArrowRight className="h-4 w-4" />
               </Link>
               <Link href="/services" className="btn-secondary justify-center">
                 {locale === 'id' ? 'Kembali ke layanan' : 'Back to services'}

@@ -1,7 +1,9 @@
+
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, MessageCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { BrandWhatsappIcon } from '@/app/components/BrandWhatsappIcon';
 import { useLocale } from '@/app/components/LocaleProvider';
 import { siteConfig } from '@/app/lib/site';
 
@@ -27,11 +29,14 @@ export function CTASection() {
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-              <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-4 text-sm font-black text-brand-900 transition hover:-translate-y-0.5">
-                {locale === 'id' ? 'Minta Penawaran' : 'Request Quote'} <ArrowRight className="h-4 w-4" />
+              <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-4 text-[13px] font-black text-brand-900 transition hover:-translate-y-0.5 sm:text-sm">
+                {locale === 'id' ? 'Dapatkan RFQ Gratis' : 'Get Your Free RFQ'} <ArrowRight className="h-4 w-4" />
               </Link>
-              <a href={`https://wa.me/${siteConfig.whatsapp}`} className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-sm font-black text-white transition hover:bg-white/15">
-                WhatsApp <MessageCircle className="h-4 w-4" />
+              <a href={`https://wa.me/${siteConfig.whatsapp}`} className="inline-flex items-center justify-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-sm font-black text-white transition hover:bg-white/15">
+                <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/20">
+                  <BrandWhatsappIcon className="h-4 w-4" />
+                </span>
+                <span>WhatsApp</span>
               </a>
             </div>
           </div>

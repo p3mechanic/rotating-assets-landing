@@ -1,7 +1,9 @@
+
 'use client';
 
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import type { ReactNode } from 'react';
 
 export function PageHero({
   eyebrow,
@@ -10,7 +12,8 @@ export function PageHero({
   primaryHref = '/contact',
   primaryLabel,
   secondaryHref,
-  secondaryLabel
+  secondaryLabel,
+  secondaryIcon
 }: {
   eyebrow: string;
   title: string;
@@ -19,6 +22,7 @@ export function PageHero({
   primaryLabel: string;
   secondaryHref?: string;
   secondaryLabel?: string;
+  secondaryIcon?: ReactNode;
 }) {
   return (
     <section className="relative overflow-hidden border-b border-slate-200 bg-white">
@@ -32,10 +36,15 @@ export function PageHero({
           <h1 className="mt-4 text-balance text-4xl font-black tracking-[-0.045em] text-slate-950 sm:text-5xl lg:text-6xl">{title}</h1>
           <p className="mt-6 max-w-3xl text-pretty text-lg leading-9 text-slate-600">{description}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href={primaryHref} className="btn-primary justify-center">
+            <Link href={primaryHref} className="btn-primary justify-center text-[13px] sm:text-sm">
               {primaryLabel} <ArrowRight className="h-4 w-4" />
             </Link>
-            {secondaryHref && secondaryLabel ? <Link href={secondaryHref} className="btn-secondary justify-center">{secondaryLabel}</Link> : null}
+            {secondaryHref && secondaryLabel ? (
+              <Link href={secondaryHref} className="btn-secondary justify-center">
+                {secondaryIcon ? <span className="flex h-5 w-5 items-center justify-center text-brand-800">{secondaryIcon}</span> : null}
+                {secondaryLabel}
+              </Link>
+            ) : null}
           </div>
         </div>
       </div>

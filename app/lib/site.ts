@@ -489,7 +489,8 @@ export const partnerLogos: PartnerLogo[] = [
   { name: 'PT Paiton Operation & Maintenance Indonesia (POMI)', src: '/partners/pomi.webp', width: 300, height: 127 },
   { name: 'PT Paiton Energy', src: '/partners/paiton-energy.webp', width: 431, height: 180 },
   { name: 'Cirebon Power', src: '/partners/cirebon-power.webp', width: 350, height: 141 },
-  { name: 'MATRA', src: '/partners/matra.png', width: 826, height: 217 }
+  { name: 'MATRA', src: '/partners/matra.png', width: 826, height: 217 },
+  { name: 'Sulzer Indonesia', src: '/partners/sulzer-indonesia.png', width: 199, height: 47 }
 ];
 
 export const portfolioItems = [

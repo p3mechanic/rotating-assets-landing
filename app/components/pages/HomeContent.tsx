@@ -44,8 +44,8 @@ export function HomeContent() {
             </h1>
             <p className="mt-6 max-w-3xl text-pretty text-lg leading-9 text-slate-600">{heroCopy.description[locale]}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact" className="btn-primary justify-center">
-                {locale === 'id' ? 'Minta RFQ' : 'Request RFQ'} <ArrowRight className="h-4 w-4" />
+              <Link href="/contact" className="btn-primary justify-center text-[13px] sm:text-sm">
+                {locale === 'id' ? 'Dapatkan RFQ Gratis' : 'Get Your Free RFQ'} <ArrowRight className="h-4 w-4" />
               </Link>
               <Link href="/services" className="btn-secondary justify-center">{locale === 'id' ? 'Lihat Capability' : 'View Capability'}</Link>
             </div>

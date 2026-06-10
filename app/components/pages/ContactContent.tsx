@@ -1,6 +1,8 @@
+
 'use client';
 
-import { Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
+import { BrandWhatsappIcon } from '@/app/components/BrandWhatsappIcon';
 import { ContactForm } from '@/app/components/ContactForm';
 import { PageHero } from '@/app/components/PageHero';
 import { SectionHeading } from '@/app/components/SectionHeading';
@@ -16,9 +18,10 @@ export function ContactContent() {
         title={locale === 'id' ? 'Kirim inquiry teknis atau permintaan penawaran.' : 'Send a technical inquiry or quotation request.'}
         description={locale === 'id' ? 'Sertakan equipment, kondisi, scope pekerjaan, dan target waktu agar tim PT VPE dapat menyiapkan respons yang tepat.' : 'Include equipment, condition, work scope, and timeline so PT VPE can prepare an accurate response.'}
         primaryHref="#rfq"
-        primaryLabel={locale === 'id' ? 'Isi form RFQ' : 'Fill RFQ form'}
+        primaryLabel={locale === 'id' ? 'Dapatkan RFQ Gratis' : 'Get Your Free RFQ'}
         secondaryHref={`https://wa.me/${siteConfig.whatsapp}`}
         secondaryLabel="WhatsApp"
+        secondaryIcon={<BrandWhatsappIcon className="h-4 w-4" />}
       />
       <section id="rfq" className="py-16 sm:py-20 lg:py-24">
         <div className="container-shell grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
@@ -27,16 +30,27 @@ export function ContactContent() {
             <div className="mt-8 grid gap-4 text-sm text-slate-700">
               <a href={`tel:${siteConfig.phone}`} className="contact-card"><Phone className="h-5 w-5 text-brand-700" /><span><strong>Phone</strong>{siteConfig.phone}</span></a>
               <a href={`mailto:${siteConfig.salesEmail}`} className="contact-card"><Mail className="h-5 w-5 text-brand-700" /><span><strong>Email</strong><span className="break-all">{siteConfig.salesEmail}<br />{siteConfig.email}</span></span></a>
-              <a href={`https://wa.me/${siteConfig.whatsapp}`} className="contact-card"><MessageCircle className="h-5 w-5 text-brand-700" /><span><strong>WhatsApp</strong>{siteConfig.phone}</span></a>
+              <a href={`https://wa.me/${siteConfig.whatsapp}`} className="contact-card">
+                <span className="flex h-10 w-10 flex-none items-center justify-center rounded-2xl bg-brand-50 text-brand-800">
+                  <BrandWhatsappIcon className="h-5 w-5" />
+                </span>
+                <span><strong>WhatsApp</strong>{siteConfig.phone}</span>
+              </a>
               {offices.map((office) => <div key={office.address} className="contact-card"><MapPin className="h-5 w-5 flex-none text-brand-700" /><span><strong>{pick(office.title)}</strong>{office.address}</span></div>)}
             </div>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {services.map((service) => <span key={service.slug} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700">{pick(service.title)}</span>)}
-            </div>
           </div>
+
           <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-card sm:p-8">
             <SectionHeading eyebrow="RFQ form" title={locale === 'id' ? 'Form inquiry.' : 'Inquiry form.'} description={locale === 'id' ? 'Tim PT VPE akan meninjau detail kebutuhan dan menghubungi Anda melalui kontak yang diberikan.' : 'PT VPE will review the requirement details and respond through the contact information provided.'} />
-            <div className="mt-8"><ContactForm /></div>
+            <div className="mt-8 rounded-2xl bg-slate-50 p-4 text-sm text-slate-600">
+              <p className="font-bold text-slate-950">{locale === 'id' ? 'Layanan yang tersedia' : 'Available services'}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {services.map((service) => <span key={service.slug} className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700">{pick(service.title)}</span>)}
+              </div>
+            </div>
+            <div className="mt-6">
+              <ContactForm />
+            </div>
           </div>
         </div>
       </section>
