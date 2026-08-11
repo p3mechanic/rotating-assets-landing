@@ -58,10 +58,10 @@ export const siteConfig = {
 
 export const offices = [
   {
-    title: { id: 'Operational Office', en: 'Operational Office' },
-    address:
-      'Jl. Lap. Tembak, Blok H-4 Dusun Pesisir Sumberanyar, Kec. Paiton, Kab. Probolinggo, Provinsi Jawa Timur'
-  },
+  title: { id: 'Operational Office & Workshop', en: 'Operational Office & Workshop' },
+  address:
+    'Jl. Raya KM 132, Desa Sumberanyar, Kecamatan Paiton, Kabupaten Probolinggo, Jawa Timur, 67291'
+},
   {
     title: { id: 'Workshop', en: 'Workshop' },
     address:
