@@ -10,5 +10,36 @@ export const metadata = createPageMetadata({
 });
 
 export default function ProfilePage() {
-  return <><JsonLd data={{ '@context': 'https://schema.org', '@type': 'ProfilePage', name: 'PT VPE Company Profile', description: metadata.description, url: `${siteConfig.url}/profile`, about: siteConfig.legalName }} /><ProfileContent /></>;
+  const organizationId = `${siteConfig.url}/#organization`;
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${siteConfig.url}/profile#profilepage`,
+    name: 'PT VPE Company Profile',
+    description: metadata.description,
+    url: `${siteConfig.url}/profile`,
+    about: { '@id': organizationId },
+    mainEntity: {
+      '@type': 'Organization',
+      '@id': organizationId,
+      name: siteConfig.legalName,
+      legalName: siteConfig.legalName,
+      alternateName: siteConfig.companyName,
+      url: siteConfig.url,
+      description: siteConfig.description,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteConfig.url}/brand/logo-vpe-square.png`,
+        width: 512,
+        height: 512
+      }
+    }
+  };
+
+  return (
+    <>
+      <JsonLd data={schema} />
+      <ProfileContent />
+    </>
+  );
 }
