@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { JsonLd } from '@/app/components/JsonLd';
 import { ServiceDetailContent } from '@/app/components/pages/ServiceDetailContent';
+import { createPageMetadata } from '@/app/lib/metadata';
 import { getServiceBySlug, services, siteConfig } from '@/app/lib/site';
 
 export function generateStaticParams() {
@@ -11,7 +12,11 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const service = getServiceBySlug(params.slug);
   if (!service) return {};
-  return { title: service.seoTitle, description: service.seoDescription, alternates: { canonical: `/services/${service.slug}` } };
+  return createPageMetadata({
+    title: service.seoTitle,
+    description: service.seoDescription,
+    path: `/services/${service.slug}`
+  });
 }
 
 export default function ServiceDetailPage({ params }: { params: { slug: string } }) {

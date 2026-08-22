@@ -26,7 +26,6 @@ export const metadata: Metadata = {
   creator: siteConfig.legalName,
   publisher: siteConfig.legalName,
   category: 'Industrial engineering services',
-  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     locale: siteConfig.locale,

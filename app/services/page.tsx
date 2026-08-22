@@ -1,14 +1,14 @@
-import type { Metadata } from 'next';
 import { JsonLd } from '@/app/components/JsonLd';
 import { ServicesContent } from '@/app/components/pages/ServicesContent';
+import { createPageMetadata } from '@/app/lib/metadata';
 import { services, siteConfig } from '@/app/lib/site';
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Services',
   description:
     'Layanan PT VPE: rotating service, valve maintenance and service, online leak sealing, spare part supply, refurbishment, measurements, consultant engineering, dan plant inspection.',
-  alternates: { canonical: '/services' }
-};
+  path: '/services'
+});
 
 export default function ServicesPage() {
   const schema = [

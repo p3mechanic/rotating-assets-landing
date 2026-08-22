@@ -1,13 +1,13 @@
-import type { Metadata } from 'next';
 import { HomeContent } from '@/app/components/pages/HomeContent';
 import { JsonLd } from '@/app/components/JsonLd';
+import { createPageMetadata } from '@/app/lib/metadata';
 import { certifications, faqs, offices, services, siteConfig } from '@/app/lib/site';
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: `${siteConfig.legalName} | ${siteConfig.brandLine}`,
   description: siteConfig.description,
-  alternates: { canonical: '/' }
-};
+  path: '/'
+});
 
 export default function HomePage() {
   const organizationId = `${siteConfig.url}/#organization`;
@@ -19,6 +19,7 @@ export default function HomePage() {
       '@type': 'Organization',
       '@id': organizationId,
       name: siteConfig.legalName,
+      legalName: siteConfig.legalName,
       alternateName: siteConfig.companyName,
       url: siteConfig.url,
       logo: {
